@@ -38,6 +38,19 @@ var Slides = {
     this.currentTranslateOffset += -(currentSlideOffset - prevSlideOffset);
     console.log(`Translating ${this.currentTranslateOffset}px`);
     $('.slide').css('transform', `translateX(${this.currentTranslateOffset}px)`);
+  },
+  prevSlide: function() {
+    if (this.currentSlideIdx === 0) return;
+    --(this.currentSlideIdx);
+    console.log(`Heading to slide: ${this.currentSlideIdx}`);
+    var nextSlideOffset = $($('.slide')[this.currentSlideIdx + 1]).offset().left;
+    var currentSlideOffset = $($('.slide')[this.currentSlideIdx]).offset().left;
+    if (this.currentTranslateOffset === null) {
+      this.currentTranslateOffset = prevSlideOffset;
+    }
+    this.currentTranslateOffset += nextSlideOffset - currentSlideOffset;
+    console.log(`Translating ${this.currentTranslateOffset}px`);
+    $('.slide').css('transform', `translateX(${this.currentTranslateOffset}px)`);
   }
 }
 
