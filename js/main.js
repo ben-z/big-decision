@@ -1,6 +1,6 @@
 'use strict';
 
-var NEW_SLIDE_TEMPLATE = '<div class="col s9 slide"><div class="card-panel white"><span>What\'s on your mind?</span></div></div>';
+var NEW_SLIDE_TEMPLATE = '<div class="col s9 slide"><div class="tinymce"><h2><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" style="float: right"/>TinyMCE Inlite Theme</h2></div></div>'; //TinyMCE template
 
 var $;
 var Slides = {
@@ -40,6 +40,19 @@ var Slides = {
     var newSlide = $(NEW_SLIDE_TEMPLATE);
     this.slides.append(newSlide);
     newSlide.css('transform', `translateX(${this.currentTranslateOffset}px)`);
+    tinymce.init({
+    selector: 'div.tinymce',
+    theme: 'inlite',
+    plugins: 'image table link paste contextmenu textpattern autolink',
+    insert_toolbar: 'quickimage quicktable',
+    selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+    inline: true,
+    paste_data_images: true,
+    content_css: [
+      '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+      '//www.tinymce.com/css/codepen.min.css'    
+    ]
+    });
   },
   editingEnabled: true
 }
@@ -52,5 +65,18 @@ $(document).ready(function() {
     else if(e.keyCode == 39) { // right
       Slides.nextSlide();
     }
+  });
+  tinymce.init({
+    selector: 'div.tinymce',
+    theme: 'inlite',
+    plugins: 'image table link paste contextmenu textpattern autolink',
+    insert_toolbar: 'quickimage quicktable',
+    selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
+    inline: true,
+    paste_data_images: true,
+    content_css: [
+      '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+      '//www.tinymce.com/css/codepen.min.css'    
+    ]
   });
 });
