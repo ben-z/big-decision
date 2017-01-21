@@ -25,9 +25,10 @@ var BASE_CENTER_OFFSET = 0.125; // Base offset as a fraction of screen width
 
 var Slides = {
   currentSlideIdx: 0,
-  slides: [],
+  slides: $('.slide'),
   currentTranslateOffset: null,
   nextSlide: function() {
+    if (this.currentSlideIdx === this.slides.length - 1) return;
     ++(this.currentSlideIdx);
     console.log(`Heading to slide: ${this.currentSlideIdx}`);
     var currentSlideOffset = $($('.slide')[this.currentSlideIdx]).offset().left;
