@@ -1,0 +1,22 @@
+{ 
+    "title" : "##TITLE##",
+    "presID" : "presFile",
+    "secKey" : "sec",
+    "slides" : [
+    {
+      "x" : -2000,
+      "y" : 0,
+      "content": "Secnd presentation"
+    },
+    {
+      "x" : 0,
+      "y" : 0,
+      "content": "Second <i>HTML</i> content"
+    },
+    {
+      "x" : 2000,
+      "y" : 0,
+      "content": "Thirs <i>HTML</i> content"
+    }
+    ]
+}
