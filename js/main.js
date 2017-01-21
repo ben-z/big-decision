@@ -1,5 +1,8 @@
-var NEW_SLIDE_TEMPLATE = `<div class="col s9 slide"><div class="card-panel white"><span>What's on your mind?</span></div></div>`;
+'use strict';
 
+var NEW_SLIDE_TEMPLATE = '<div class="col s9 slide"><div class="card-panel white"><span>What\'s on your mind?</span></div></div>';
+
+var $;
 var Slides = {
   currentSlideIdx: 0,
   slides: $($('.slides')[0]),
