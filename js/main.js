@@ -1,14 +1,3 @@
-$(document).ready(function() {
-  $("body").keydown(function(e) {
-    if(e.keyCode == 37) { // left
-      Slides.prevSlide();
-    }
-    else if(e.keyCode == 39) { // right
-      Slides.nextSlide();
-    }
-  });
-});
-
 var NEW_SLIDE_TEMPLATE = `<div class="col s9 slide"><div class="card-panel white"><span>What's on your mind?</span></div></div>`;
 
 var Slides = {
@@ -51,3 +40,14 @@ var Slides = {
   },
   editingEnabled: true
 }
+
+$(document).ready(function() {
+  $("body").keydown(function(e) {
+    if(e.keyCode == 37) { // left
+      Slides.prevSlide();
+    }
+    else if(e.keyCode == 39) { // right
+      Slides.nextSlide();
+    }
+  });
+});
