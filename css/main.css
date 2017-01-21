@@ -1,7 +1,8 @@
-body {
+html, body {
 	margin: 0;
 	padding: 0;
 	font-family: Helvetica, sans-serif;
+	max-width: 100%;
 }
 
 .header {
@@ -24,70 +25,62 @@ body {
 	background: #85FA92;
 }
 
-.main {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;  
-  
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  
-  font-weight: bold;
-  text-align: center;
-
-  width: 100%;
+#carousel-wrapper {
+	position: relative;
 }
 
-.main > * {
-	margin-top: 24px;
-	padding: 10px;
+ul {
+	position: absolute;
+	display:flex;  
+	list-style:none;
 }
 
-.prev, .current, .next {
+li {
+	margin: 32px;
+	list-style-type: none;
 	height: 70vh;
+	width: 80vw;
 	background: #EAEAEA;
 	border: 1px solid rgba(150,150,150,0.10);
 	box-shadow: 2px 2px 10px 0 rgba(107,107,107,0.17);
 }
 
-.prev {
-	width: 10%;
-}
-
-.next {
-	width: 10%;
-}
-
-.current {
-	width: 60%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.current .input-fields {
+.input-fields {
 	margin: 32px 48px;
+	display:flex;
+	flex-direction: column;
 }
 
-.title, .description {
+
+.title {
 	display: block;
 	font-weight: 600;
 	padding: 8px 20px;
-	height: 3rem;
-	width: 90%;
 	margin: 0 auto;
 	border: 1px solid transparent;
 	border-radius: 5px;
+	height: 3rem;
+	font-size: 32px;
 }
 
 .description {
 	margin-top: 32px;
+	height: 40vh;
+	font-family: "Helvetica";
+	font-size: 24px;
+	padding: 16px;
+	color: #000;
 }
+
 
 textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
     border-color: rgba(151, 151, 151, 0.2);
     outline: 0 none;
+}
+
+textarea {
+	resize: none;
+	padding-top: none;
 }
 
 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
