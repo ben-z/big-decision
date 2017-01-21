@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WebSocket Echo Client</title>
+  <meta charset="UTF-8" />
+  <script>
+    "use strict";
+    // Initialize everything when the window finishes loading
+    window.addEventListener("load", function(event) {
+      var next = document.getElementById("next");
+      var prev = document.getElementById("prev");
+      var secID = document.getElementById("secID");
+      var message = document.getElementById("message");
+      var socket;
+
+      var serverUrl = "ws://localhost:8080";
+      var secID = "sec";
+
+      // open
+        socket = new WebSocket(serverUrl, "echo-protocol");
+
+        // Display messages received from the server
+        socket.addEventListener("message", function(event) {
+          if(event.data == "next"){
+            message.textContent = "Server Says: we shall go next";
+          }else if(event.data == "prev"){
+            message.textContent = "Server wants us to go back";
+          }
+        });
+       
+
+      // Send text to the server when the Send button is clicked
+      next.addEventListener("click", function(event) {
+        socket.send(secID + "next");
+      });
+      // Send text to the server when the Send button is clicked
+      prev.addEventListener("click", function(event) {
+        socket.send(secID + "prev");
+      });
+    });
+  </script>
+</head>
+<body>
+  <input id="prev" type="button" value="<- Previous" />&nbsp;
+  <input id="next" type="button" value="Next ->" />&nbsp;
+  <span id="message"></span>
+</body>
+</html>
