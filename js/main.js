@@ -20,3 +20,30 @@ $(document).ready(function() {
 	    }
 	});
 });
+
+var BASE_CENTER_OFFSET = 0.125; // Base offset as a fraction of screen width
+
+var Slides = {
+  currentSlideIdx: 0,
+  slides: [],
+  currentTranslateOffset: null,
+  nextSlide: function() {
+    ++(this.currentSlideIdx);
+    console.log(`Heading to slide: ${this.currentSlideIdx}`);
+    var currentSlideOffset = $($('.slide')[this.currentSlideIdx]).offset().left;
+    var prevSlideOffset = $($('.slide')[this.currentSlideIdx - 1]).offset().left;
+    if (this.currentTranslateOffset === null) {
+      this.currentTranslateOffset = prevSlideOffset;
+    }
+    this.currentTranslateOffset += -(currentSlideOffset - prevSlideOffset);
+    console.log(`Translating ${this.currentTranslateOffset}px`);
+    $('.slide').css('transform', `translateX(${this.currentTranslateOffset}px)`);
+  }
+}
+
+$(document).ready(function() {
+  var currentSlideNum = 0;
+  var slides = [
+    
+  ];
+});
