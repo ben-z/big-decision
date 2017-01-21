@@ -1,19 +1,28 @@
+html {
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
 body {
   height: 100vh;
 }
 
-.slide {
+.slides {
   height: 70%;
-  transition: transform 2s;
+  padding: 20px;
+  white-space: nowrap;
+  display: inline-block;
+  overflow-y: hidden;
 }
-
-.slide:hover {
-  transform: translate(-300px)
+.slide {
+  display:inline-block;
+  white-space: normal;
+  vertical-align: top;
+  height: 100%;
+  transition: transform 2s;
 }
 
 .slide > .col {
   height: 100%;
-  padding-top: 2em;
   margin-left: auto;
   margin-right: auto;
   float: none;
