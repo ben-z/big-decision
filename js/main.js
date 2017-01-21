@@ -21,14 +21,14 @@ $(document).ready(function() {
 	});
 });
 
-var BASE_CENTER_OFFSET = 0.125; // Base offset as a fraction of screen width
+var NEW_SLIDE_TEMPLATE = `<div class="col s9 slide"><div class="card-panel white"><span>What's on your mind?</span></div></div>`;
 
 var Slides = {
   currentSlideIdx: 0,
-  slides: $('.slide'),
+  slides: $($('.slides')[0]),
   currentTranslateOffset: null,
   nextSlide: function() {
-    if (this.currentSlideIdx === this.slides.length - 1) return;
+    if (this.currentSlideIdx === this.slides.children().length - 1) return;
     ++(this.currentSlideIdx);
     console.log(`Heading to slide: ${this.currentSlideIdx}`);
     var currentSlideOffset = $($('.slide')[this.currentSlideIdx]).offset().left;
@@ -52,6 +52,11 @@ var Slides = {
     this.currentTranslateOffset += nextSlideOffset - currentSlideOffset;
     console.log(`Translating ${this.currentTranslateOffset}px`);
     $('.slide').css('transform', `translateX(${this.currentTranslateOffset}px)`);
+  },
+  newSlide: function() {
+    var newSlide = $(NEW_SLIDE_TEMPLATE);
+    this.slides.append(newSlide);
+    newSlide.css('transform', `translateX(${this.currentTranslateOffset}px)`);
   }
 }
 
