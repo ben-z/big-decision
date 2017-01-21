@@ -97,6 +97,22 @@ app.listen(8080, function () {
 })
 
 /**
+***Save the json POST request to a file
+**/
+app.post('/s/:ID', function (req, res) {
+  var jsonString = '';
+  req.on('data', function (data) {
+    jsonString += data;
+  });
+
+  req.on('end', function () {
+    fs.writeFile("files/" + req.params.ID + ".json", jsonString, function (err) {
+      if (err) throw err;
+        console.log(req.params.ID + ".json is saved");
+    });
+  });
+});
+/**
 *** Get the presentation in view mode
 ***/
   app.get('/p/:ID', function (req, res) {
