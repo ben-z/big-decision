@@ -4,6 +4,11 @@ body {
 
 .slide {
   height: 70%;
+  transition: transform 2s;
+}
+
+.slide:hover {
+  transform: translate(-300px)
 }
 
 .slide > .col {
