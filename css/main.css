@@ -7,6 +7,10 @@ html, body {
   overflow-x: hidden;
 }
 
+nav {
+  box-shadow: 0 10px 12px 0 rgba(29, 29, 31, 0.05);
+}
+
 .nav-wrapper {
   background: #fff;
 }
@@ -20,6 +24,7 @@ html, body {
   background: #2082FC;
   box-shadow: 0 7px 12px 0 rgba(23,42,99,0.20);
   border-radius: 2px;
+  font-weight: 600;
 }
 
 .nav-wrapper .btn:active {
