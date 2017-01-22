@@ -756,10 +756,28 @@ a:focus {
 
 .copy-field {
   float: left;
+  position: relative;
 }
 
 .copy-field input {
   width: 290px;
+}
+
+.woo {
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    opacity: 1;
+    color: #000;
+    font-size: 16px;
+}
+
+.animatedwoo {
+    opacity: 0;
+    top: -18px;
+    -webkit-transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
 }
 
 .modal button {
