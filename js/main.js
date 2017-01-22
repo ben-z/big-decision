@@ -88,17 +88,25 @@ var Slides = {
   }
 };
 
+function nextSlideHandler(e) {
+  e.preventDefault();
+  Slides.newSlide();
+  Slides.nextSlide();
+}
+
+function prevSlideHandler(e) {
+  e.preventDefault();
+  Slides.prevSlide();
+}
+
 $(document).ready(function() {
   $("body").keydown(function(e) {
-    if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) { // shift+tab or left on left arrow
-      e.preventDefault();
-      Slides.prevSlide();
+    // shift+tab or left on left arrow
+    if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) {
+      prevSlideHandler(e);
     }
     else if(e.keyCode == 39 || e.keyCode == 9) { // right on tab or right arrow
-      e.preventDefault();
-      Slides.newSlide();
-      Slides.nextSlide();
-
+      nextSlideHandler(e);
     }
   });
 
@@ -125,11 +133,7 @@ $(document).ready(function() {
     console.log(Slides.get_html_content());
   });
 
-  $($('.slides')[0]).on('click', '.prev-button', function() {
-    Slides.prevSlide();
-  });
-  $($('.slides')[0]).on('click', '.next-button', function() {
-    Slides.nextSlide();
-  });
+  $($('.slides')[0]).on('click', '.prev-button', prevSlideHandler);
+  $($('.slides')[0]).on('click', '.next-button', nextSlideHandler);
   Slides.reAssignListeners();
 });
