@@ -1,22 +1,49 @@
-{ 
-    "title" : "##TITLE##",
-    "presID" : "{{presID}}",
-    "secKey" : "{{secKey}}",
-    "slides" : [
-    {
-      "x" : -2000,
-      "y" : 0,
-      "content": "My coole <h1>HTML</h1> content"
-    },
-    {
-      "x" : 0,
-      "y" : 0,
-      "content": "Second <i>HTML</i> content"
-    },
-    {
-      "x" : 2000,
-      "y" : 0,
-      "content": "Thirs <i>HTML</i> content"
-    }
-    ]
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Expedite.io
+  {{presID}} {{secKey}}</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" href="css/main.css"> </head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Big Decision</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a id="present-button" class="waves-effect waves-light btn">PRESENT</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  
+  <div class="row slides">
+    <div class="col slide">
+        <div class="card-panel white">
+          <div class="tinymce">
+              <h2><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" style="float: right"/>TinyMCE Inlite Theme</h2>
+          </div> 
+        </div>
+    </div>
+    <div class="col slide">
+      <div class="card-panel white">
+          <div class="tinymce">
+              <h2><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" style="float: right"/>TinyMCE Inlite Theme</h2>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
+  <script type="text/javascript" src="js/main.js/{{presID}}/{{secKey}}"></script>
+</body>
+
+</html>
