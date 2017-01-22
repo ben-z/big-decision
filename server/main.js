@@ -212,8 +212,8 @@ app.post('/s/:ID', function (req, res) {
   app.use(express.static('static'))
 
 
-app.listen(8080, function () {
-  console.log('Webserver listening on 8080!')
+app.listen(80, function () {
+  console.log('Webserver listening on 80!')
 })
 
 /************
