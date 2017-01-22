@@ -8,8 +8,6 @@ var path = require('path')
 var express = require('express')
 var cookieParser = require('cookie-parser')
 
-var clients = [];
-
 var presentations = []
 
 var secID = "sec";
@@ -47,19 +45,16 @@ var app = express()
         }
         console.log("The new presentation " + newPresentationID + ".json was saved!");
       }); 
+      /*Set the presenter key*/
+      res.cookie('presenter', newSecKey, { maxAge: 900000, httpOnly: true })
+
       /*Render the newPresentation*/
       console.log("PRES ID:" + newPresentationID)
       res.render("newPresentation", {
         presID : newPresentationID,
         secKey : newSecKey
       })
-
-      /*Set the presenter key*/
-      res.cookie('presenter', newSecKey, { maxAge: 900000, httpOnly: true });
   })
-
-/*use the whole static folder*/
-  app.use(express.static('static'))
 
 
 /*
@@ -90,7 +85,7 @@ var app = express()
           if(presentations[i].ID == req.params.presID){
             res.render("impressPresenter", {
               presID : req.params.presID,
-              secKey : "sec"
+              secKey : presentations[i].secKey
             })
             break
           }
@@ -104,14 +99,23 @@ var app = express()
     }
   })
 
-app.listen(8080, function () {
-  console.log('Webserver listening on 8080!')
-})
+/*
+**Render the frontend js
+*/
+  app.get('/js/main.js/:presID/:secKey', function (req, res) {
+    console.log("Render Frontend JS")
+    res.render("frontendMain", {
+      presID : req.params.presID,
+      secKey : req.params.secKey
+    })
+  })
+
 
 /**
 ***Save the json POST request to a file
 **/
 app.post('/s/:ID', function (req, res) {
+  console.log("Save POST data")
   var jsonString = '';
   req.on('data', function (data) {
     jsonString += data;
@@ -123,6 +127,7 @@ app.post('/s/:ID', function (req, res) {
         console.log(req.params.ID + ".json is saved");
     });
   });
+  res.end()
 });
 /**
 *** Get the presentation in view mode
@@ -141,7 +146,6 @@ app.post('/s/:ID', function (req, res) {
                 res.writeHead(302, {
                   'Location': '/'
                 });
-                res.end();
               }else{
                 console.log(err)
               }
@@ -178,7 +182,6 @@ app.post('/s/:ID', function (req, res) {
 
               /*Render the presentation with the given data*/
                 res.render("index", {
-                  siteTitle : JSONData.title,
                   presID : JSONData.presID,
                   template : JSONData.template,
                   secKey : JSONData.secKey,
@@ -189,6 +192,14 @@ app.post('/s/:ID', function (req, res) {
   })
 
 
+
+/*use the whole static folder*/
+  app.use(express.static('static'))
+
+
+app.listen(8080, function () {
+  console.log('Webserver listening on 8080!')
+})
 
 /************
 ************
@@ -240,7 +251,6 @@ wsServer.on('request', function(request) {
 
     /*Recieving message from client*/
       connection.on('message', function(message) {
-        console.log("Clients connected: " + clients.length);
         if (message.type === 'utf8') {
           /*Parse JSONString to object*/
             jsonMessage = JSON.parse(message.utf8Data)
@@ -303,7 +313,7 @@ wsServer.on('request', function(request) {
 
                     if(!found){
                       console.log("WebSocketServer not found instance")
-                      return
+                      
                     }
 
                   /*Add the client to the array*/
