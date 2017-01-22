@@ -768,13 +768,14 @@ a:focus {
     left: 18px;
     top: 18px;
     opacity: 1;
-    color: #000;
+    color: transparent;
     font-size: 16px;
 }
 
 .animatedwoo {
     opacity: 0;
     top: -18px;
+    color: #000;
     -webkit-transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
     -moz-transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out, top 0.2s ease-in-out;
