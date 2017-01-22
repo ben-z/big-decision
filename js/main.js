@@ -4,7 +4,7 @@ var NEW_SLIDE_TEMPLATE="";
 NEW_SLIDE_TEMPLATE += "    <div class=\"col slide\">";
 NEW_SLIDE_TEMPLATE += "        <div class=\"card-panel white\">";
 NEW_SLIDE_TEMPLATE += "          <div class=\"tinymce\">";
-NEW_SLIDE_TEMPLATE += "              <h2><img title=\"TinyMCE Logo\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
+NEW_SLIDE_TEMPLATE += "              <h2><img title=\"What's on your mind?\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
 NEW_SLIDE_TEMPLATE += "          <\/div> ";
 NEW_SLIDE_TEMPLATE += "        <\/div>";
 NEW_SLIDE_TEMPLATE += "    <\/div>";
@@ -70,11 +70,11 @@ var Slides = {
     $('.tinymce h2').show();
   },
   get_html_content: function(){
-    var arr = []
+    var arr = [];
     for (var i = 0; i<this.slides.children().length; i++){
      arr.push(tinyMCE.get('mce_'+i).getContent());  //getting the content by id of a particular text  area
     }
-    return arr
+    return arr;
   },
   editingEnabled: true,
   reAssignListeners: function() {
@@ -89,7 +89,6 @@ var Slides = {
 };
 
 $(document).ready(function() {
-
   $("body").keydown(function(e) {
     if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) { // shift+tab or left on left arrow
       e.preventDefault();
