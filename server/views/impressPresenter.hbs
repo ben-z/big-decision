@@ -30,7 +30,7 @@ var api = impress();
     window.addEventListener("load", function(event) {
       var socket;
 
-      var serverUrl = "ws://localhost:9292/";
+      var serverUrl = "ws://screenkraut.me:9292/";
       var presID = "{{presID}}"
       var secKey = "{{secKey}}"
       var stepEnterTimeout = null;
@@ -147,8 +147,8 @@ document.addEventListener( "touchstart", function( event ) {
 
 /*Show the hint*/
 document.getElementById("urlHint").style.display = "block";
-document.getElementById("presenter-url").value = "screenkraut.me/p/{{presID}}/{{secKey}}";
+document.getElementById("presenter-url").value = "screenkraut.me/sc/{{presID}}/{{secKey}}";
 document.getElementById("viewer-url").value = "screenkraut.me/p/{{presID}}";
 
-document.getElementsByClassName('woo')[0].innerHTML = "screenkraut.me/p/{{presID}}/{{secKey}}";
+document.getElementsByClassName('woo')[0].innerHTML = "screenkraut.me/sc/{{presID}}/{{secKey}}";
 document.getElementsByClassName('woo')[1].innerHTML = "screenkraut.me/p/{{presID}}";
