@@ -427,3 +427,15 @@ body {
 .modal button#present-button span {
   font-size: 16px;
 }
+
+@media (max-width: 550px) {
+  .modal {
+    display: none;
+  }
+}
+
+
+
+
+
+
