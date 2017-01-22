@@ -681,8 +681,8 @@ a:focus {
     everything 'unclickable' except what's in #impress element.
 
     So use it wisely ... or don't use at all.
-*/
-.impress-enabled          { pointer-events: none }
+*//*
+.impress-enabled          { pointer-events: none }*/
 .impress-enabled #impress { pointer-events: auto }
 
 /*
