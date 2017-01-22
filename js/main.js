@@ -1,6 +1,13 @@
 'use strict';
 
-var NEW_SLIDE_TEMPLATE = '<div class="col s9 slide"><div class="tinymce"><h2><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" style="float: right"/>TinyMCE Inlite Theme</h2></div></div>'; //TinyMCE template
+var NEW_SLIDE_TEMPLATE="";
+NEW_SLIDE_TEMPLATE += "    <div class=\"col slide\">";
+NEW_SLIDE_TEMPLATE += "        <div class=\"card-panel white\">";
+NEW_SLIDE_TEMPLATE += "          <div class=\"tinymce\">";
+NEW_SLIDE_TEMPLATE += "              <h2><img title=\"TinyMCE Logo\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
+NEW_SLIDE_TEMPLATE += "          <\/div> ";
+NEW_SLIDE_TEMPLATE += "        <\/div>";
+NEW_SLIDE_TEMPLATE += "    <\/div>";
 
 var $;
 var Slides = {
@@ -54,6 +61,7 @@ var Slides = {
         '//www.tinymce.com/css/codepen.min.css'    
       ]
     });
+    $('.tinymce h2').show();
   },
   get_html_content: function(){
     var arr = []
@@ -66,14 +74,15 @@ var Slides = {
 };
 
 $(document).ready(function() {
+
   $("body").keydown(function(e) {
-    // TODO: make tabs also change the selected TinyMCE box
     if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) { // shift+tab or left on left arrow
       e.preventDefault();
       Slides.prevSlide();
     }
     else if(e.keyCode == 39 || e.keyCode == 9) { // right on tab or right arrow
       e.preventDefault();
+      Slides.newSlide();
       Slides.nextSlide();
     }
   });
