@@ -81,8 +81,8 @@ table {
     And yes, there is a lot of repetition there because of -prefixes but we don't
     want to leave anybody behind.
 */
-body {
-    font-family: 'PT Sans', sans-serif;
+body {  
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
     min-height: 740px;
 
     background: rgb(250, 250, 250);
