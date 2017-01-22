@@ -55,28 +55,36 @@ var Slides = {
     });
   },
   editingEnabled: true
-}
+};
 
 $(document).ready(function() {
   $("body").keydown(function(e) {
-    if(e.keyCode == 37) { // left
+    // TODO: make tabs also change the selected TinyMCE box
+    if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) { // shift+tab or left on left arrow
+      e.preventDefault();
       Slides.prevSlide();
     }
-    else if(e.keyCode == 39) { // right
+    else if(e.keyCode == 39 || e.keyCode == 9) { // right on tab or right arrow
+      e.preventDefault();
       Slides.nextSlide();
     }
   });
+
   tinymce.init({
     selector: 'div.tinymce',
     theme: 'inlite',
-    plugins: 'image table link paste contextmenu textpattern autolink',
+    plugins: 'image table link paste contextmenu textpattern autolink autoresize',
     insert_toolbar: 'quickimage quicktable',
     selection_toolbar: 'bold italic | quicklink h2 h3 blockquote',
     inline: true,
     paste_data_images: true,
+    width: '100%',
+    height: '200px',
     content_css: [
       '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
       '//www.tinymce.com/css/codepen.min.css'    
     ]
   });
+
+  $('.tinymce h2').show();
 });

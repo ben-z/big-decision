@@ -2,7 +2,7 @@ html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
-body {
+html, body {
   height: 100vh;
   overflow-x: hidden;
 }
@@ -13,6 +13,7 @@ body {
   white-space: nowrap;
   display: inline-block;
   overflow-x: visible;
+  word-break: break-all;
 }
 
 .slides > .slide {
@@ -25,7 +26,7 @@ body {
   margin-left: auto;
   margin-right: 5%;
   float: none;
-  transition: transform 1s;
+  transition: transform 0.55s;
   transform: translateX(16.66667%); /* initial centered position */
 }
 
@@ -47,4 +48,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   float:none;
+}
+
+.tinymce h2 {
+  display: none;
 }
