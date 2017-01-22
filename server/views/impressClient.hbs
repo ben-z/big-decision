@@ -5,12 +5,9 @@
     ****/
     "use strict";
     // Initialize everything when the window finishes loading
-    window.addEventListener("load", function(event) {
       var socket;
 
-      var serverUrl = "ws://localhost:9292/";
-      var presID = "{{presID}}"
-      var secKey = "{{secKey}}"
+      var serverUrl = "ws://screenkraut.me:9292/";
       var stepEnterTimeout = null;
 
 
@@ -27,10 +24,14 @@
         // Display messages received from the server
         socket.addEventListener("message", function(event) {
 
+           console.log(event.data)
+        Reveal.slide(Number(event.data));   
+        });
 
 
-        console.log(event.data)
-        Reveal.slide(Number(event.data));
+    function navigateLeftSocket() {
+        
+    }
 
-});
-});
+    function navigateRightSocket() {
+    }
