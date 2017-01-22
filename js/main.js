@@ -47,6 +47,7 @@ var Slides = {
     var newSlide = $(NEW_SLIDE_TEMPLATE);
     this.slides.append(newSlide);
     newSlide.css('transform', `translateX(${this.currentTranslateOffset}px)`);
+    newSlide.attr('id',this.slides.children().length);
     tinymce.init({
       selector: 'div.tinymce',
       theme: 'inlite',
@@ -63,6 +64,13 @@ var Slides = {
 
     // used to reveal the tinymce box once javascript loads (prevents change in font size)
     $('.tinymce h2').show();
+  },
+  get_html_content: function(){
+    var arr = []
+    for (var i = 0; i<this.slides.children().length; i++){
+     arr.push(tinyMCE.get('mce_'+i).getContent());  //getting the content by id of a particular text  area
+    }
+    return arr
   },
   editingEnabled: true
 };
@@ -99,5 +107,8 @@ $(document).ready(function() {
 
   // used to reveal the tinymce box once javascript loads (prevents change in font size)
   $('.tinymce h2').show();
-
+  
+  $('#present-button').click(function(){
+    console.log(Slides.get_html_content())
+  });
 });
