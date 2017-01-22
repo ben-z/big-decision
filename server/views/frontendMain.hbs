@@ -4,11 +4,25 @@ var NEW_SLIDE_TEMPLATE="";
 NEW_SLIDE_TEMPLATE += "    <div class=\"col slide\">";
 NEW_SLIDE_TEMPLATE += "        <div class=\"card-panel white\">";
 NEW_SLIDE_TEMPLATE += "          <div class=\"tinymce\">";
-NEW_SLIDE_TEMPLATE += "              <h2 style=\"text-align: center;\">Be Creative... :)<\/h2>";
+NEW_SLIDE_TEMPLATE += "              <h2 style=\"text-align: center;\">{RANDOM_QUOTE}<\/h2>";
 NEW_SLIDE_TEMPLATE += "          <\/div> ";
 NEW_SLIDE_TEMPLATE += "        <\/div>";
 NEW_SLIDE_TEMPLATE += "    <\/div>";
-
+  
+var quotes = [
+  "Be Creative...",
+  "Your imagination is unbounded, like the universe...",
+  "What's on your mind?",
+  "Make your audience smile :)"
+];
+  
+/**
+ * Returns a random number between min (inclusive) and max (exclusive)
+ */
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+  
 var $;
 var Slides = {
   currentSlideIdx: 0,
@@ -46,7 +60,8 @@ var Slides = {
   },
   newSlide: function() {
     if (!this.editingEnabled) return;
-    var newSlide = $(NEW_SLIDE_TEMPLATE);
+    var randomQuote = quotes[getRandomInt(0, quotes.length)];
+    var newSlide = $(NEW_SLIDE_TEMPLATE.replace("{RANDOM_QUOTE}", randomQuote));
     this.slides.append(newSlide);
     newSlide.css('transform', `translateX(${this.currentTranslateOffset}px)`);
     newSlide.attr('id',this.slides.children().length);
