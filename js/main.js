@@ -66,17 +66,16 @@ var Slides = {
     $('.tinymce h2').show();
   },
   get_html_content: function(){
-    var arr = []
+    var arr = [];
     for (var i = 0; i<this.slides.children().length; i++){
      arr.push(tinyMCE.get('mce_'+i).getContent());  //getting the content by id of a particular text  area
     }
-    return arr
+    return arr;
   },
   editingEnabled: true
 };
 
 $(document).ready(function() {
-
   $("body").keydown(function(e) {
     if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) { // shift+tab or left on left arrow
       e.preventDefault();
