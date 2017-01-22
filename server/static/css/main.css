@@ -7,8 +7,6 @@ html, body {
   overflow-x: hidden;
 }
 
-+
-
 .nav-wrapper {
   background: #fff;
 }
@@ -16,6 +14,10 @@ html, body {
 .nav-wrapper .brand-logo {
   margin-left: 16px;
   color: #000;
+}
+
+.nav-wrapper .brand-logo img {
+	margin-top: 8px;
 }
 
 .nav-wrapper .btn {
