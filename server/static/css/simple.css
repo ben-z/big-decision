@@ -429,7 +429,7 @@ body {
 }
 
 @media (max-width: 550px) {
-  .modal {
+  .modal-wrapper {
     display: none;
   }
 }
