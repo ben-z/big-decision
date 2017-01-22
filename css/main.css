@@ -13,6 +13,7 @@ html, body {
   white-space: nowrap;
   display: inline-block;
   overflow-x: visible;
+  word-break: break-all;
 }
 
 .slides > .slide {
