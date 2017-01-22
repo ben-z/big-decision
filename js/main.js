@@ -4,7 +4,7 @@ var NEW_SLIDE_TEMPLATE="";
 NEW_SLIDE_TEMPLATE += "    <div class=\"col slide\">";
 NEW_SLIDE_TEMPLATE += "        <div class=\"card-panel white\">";
 NEW_SLIDE_TEMPLATE += "          <div class=\"tinymce\">";
-NEW_SLIDE_TEMPLATE += "              <h2><img title=\"TinyMCE Logo\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
+NEW_SLIDE_TEMPLATE += "              <h2><img title=\"What's on your mind?\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
 NEW_SLIDE_TEMPLATE += "          <\/div> ";
 NEW_SLIDE_TEMPLATE += "        <\/div>";
 NEW_SLIDE_TEMPLATE += "    <\/div>";
