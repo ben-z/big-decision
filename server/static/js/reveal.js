@@ -3969,7 +3969,7 @@
 	}
 
 	function navigateLeft() {
-
+		navigateLeftSocket()
 		// // Reverse for RTL
 		// if( config.rtl ) {
 		// 	if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
@@ -3984,7 +3984,7 @@
 	}
 
 	function navigateRight() {
-
+		navigateRightSocket()
 		// // Reverse for RTL
 		// if( config.rtl ) {
 		// 	if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
