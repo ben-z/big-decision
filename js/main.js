@@ -85,6 +85,7 @@ $(document).ready(function() {
       e.preventDefault();
       Slides.newSlide();
       Slides.nextSlide();
+
     }
   });
 
@@ -108,6 +109,9 @@ $(document).ready(function() {
   $('.tinymce h2').show();
   
   $('#present-button').click(function(){
-    console.log(Slides.get_html_content())
+    console.log(Slides.get_html_content());
   });
+
+tinymce.execCommand('mceFocus',false,'foo');
 });
+
