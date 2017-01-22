@@ -1,11 +1,10 @@
 'use strict';
 
-
 var NEW_SLIDE_TEMPLATE="";
 NEW_SLIDE_TEMPLATE += "    <div class=\"col slide\">";
 NEW_SLIDE_TEMPLATE += "        <div class=\"card-panel white\">";
 NEW_SLIDE_TEMPLATE += "          <div class=\"tinymce\">";
-NEW_SLIDE_TEMPLATE += "              <h2><img title=\"TinyMCE Logo\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
+NEW_SLIDE_TEMPLATE += "              <h2><img title=\"What's on your mind?\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
 NEW_SLIDE_TEMPLATE += "          <\/div> ";
 NEW_SLIDE_TEMPLATE += "        <\/div>";
 NEW_SLIDE_TEMPLATE += "    <\/div>";
@@ -28,6 +27,7 @@ var Slides = {
     this.currentTranslateOffset += -(currentSlideOffset - prevSlideOffset);
     console.log(`Translating ${this.currentTranslateOffset}px`);
     $('.slide').css('transform', `translateX(${this.currentTranslateOffset}px)`);
+    this.reAssignListeners();
   },
   prevSlide: function() {
     if (!this.editingEnabled) return;
@@ -42,6 +42,7 @@ var Slides = {
     this.currentTranslateOffset += nextSlideOffset - currentSlideOffset;
     console.log(`Translating ${this.currentTranslateOffset}px`);
     $('.slide').css('transform', `translateX(${this.currentTranslateOffset}px)`);
+    this.reAssignListeners();
   },
   newSlide: function() {
     if (!this.editingEnabled) return;
@@ -63,30 +64,49 @@ var Slides = {
       ]
     });
 
+    this.reAssignListeners();
+
     // used to reveal the tinymce box once javascript loads (prevents change in font size)
     $('.tinymce h2').show();
   },
   get_html_content: function(){
-    var arr = []
+    var arr = [];
     for (var i = 0; i<this.slides.children().length; i++){
      arr.push(tinyMCE.get('mce_'+i).getContent());  //getting the content by id of a particular text  area
     }
-    return arr
+    return arr;
   },
-  editingEnabled: true
+  editingEnabled: true,
+  reAssignListeners: function() {
+    if (this.currentSlideIdx > 0) {
+      $(this.slides.children()[this.currentSlideIdx - 1]).addClass('prev-button');
+    }
+    if (this.currentSlideIdx < this.slides.children().length - 1) {
+      $(this.slides.children()[this.currentSlideIdx + 1]).addClass('next-button');
+    }
+    $(this.slides.children()[this.currentSlideIdx]).removeClass('prev-button').removeClass('next-button');
+  }
 };
 
-$(document).ready(function() {
+function nextSlideHandler(e) {
+  e.preventDefault();
+  Slides.newSlide();
+  Slides.nextSlide();
+}
 
+function prevSlideHandler(e) {
+  e.preventDefault();
+  Slides.prevSlide();
+}
+
+$(document).ready(function() {
   $("body").keydown(function(e) {
-    if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) { // shift+tab or left on left arrow
-      e.preventDefault();
-      Slides.prevSlide();
+    // shift+tab or left on left arrow
+    if(e.keyCode == 37 || ((e.shiftKey && e.keyCode == 9) )) {
+      prevSlideHandler(e);
     }
     else if(e.keyCode == 39 || e.keyCode == 9) { // right on tab or right arrow
-      e.preventDefault();
-      Slides.newSlide();
-      Slides.nextSlide();
+      nextSlideHandler(e);
     }
   });
 
@@ -108,7 +128,11 @@ $(document).ready(function() {
 
   // used to reveal the tinymce box once javascript loads (prevents change in font size)
   $('.tinymce h2').show();
-  
+
+  $($('.slides')[0]).on('click', '.prev-button', prevSlideHandler);
+  $($('.slides')[0]).on('click', '.next-button', nextSlideHandler);
+  Slides.reAssignListeners();
+
   $('#present-button').click(function(){
     var slidesContent =  Slides.get_html_content()
     var slidesReady = []

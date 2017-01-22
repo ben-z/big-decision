@@ -50,6 +50,7 @@ html, body {
 .slide > .card-panel {
   height: 100%;
   box-shadow: 0 10px 60px 0 rgba(29,29,31,0.12);
+  overflow-y: hidden;
 }
 
 .templates {
@@ -70,4 +71,9 @@ html, body {
 
 .tinymce h2 {
   display: none;
+}
+
+.prev-button, .next-button {
+  cursor: pointer;
+  cursor: hand;
 }
