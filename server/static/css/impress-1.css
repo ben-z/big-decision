@@ -712,7 +712,8 @@ a:focus {
   height: 100%;
   text-align: center;
   z-index: 99999999;
-  background-color:rgba(216,216,216,.62)
+  background-color:rgba(216,216,216,.62);
+  display:none;
 }
 
 .modal-wrapper:before {

@@ -18,7 +18,6 @@ function getCookie(cname) {
     return "";
 } 
 
-
 //***WORK***/
 var api = impress();
     api.init();
@@ -31,7 +30,7 @@ var api = impress();
     window.addEventListener("load", function(event) {
       var socket;
 
-      var serverUrl = "{{websocketUrl}}"; //"ws://localhost:9292/";
+      var serverUrl = "ws://localhost:9292/";
       var presID = "{{presID}}"
       var secKey = "{{secKey}}"
       var stepEnterTimeout = null;
@@ -144,3 +143,9 @@ document.addEventListener( "touchstart", function( event ) {
 }, false );
         });
     });
+
+
+/*Show the hint*/
+document.getElementById("urlHint").style.display = "block";
+document.getElementById("presenter-url").value = "screenkraut.me/p/{{presID}}/{{secKey}}";
+document.getElementById("viewer-url").value = "screenkraut.me/p/{{presID}}";
