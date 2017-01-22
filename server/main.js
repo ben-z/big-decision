@@ -99,6 +99,7 @@ var app = express()
         for(var i = 0; i < presentations.length; i++){
           if(presentations[i].ID == req.params.presID){
             res.render("impressPresenter", {
+              websocketUrl: process.env['WEBSOCKET_URL'] || 'ws://localhost:9292/',
               presID : req.params.presID,
               secKey : presentations[i].secKey
             })
@@ -109,6 +110,7 @@ var app = express()
       /*Render the clientJS with the given data*/
         console.log("PRES ID:" + req.params.presID)
         res.render("impressClient", {
+          websocketUrl: process.env['WEBSOCKET_URL'] || 'ws://localhost:9292/',
           presID : req.params.presID
         })
     }
@@ -212,8 +214,8 @@ app.post('/s/:ID', function (req, res) {
   app.use(express.static('static'))
 
 
-app.listen(80, function () {
-  console.log('Webserver listening on 80!')
+var server = app.listen(process.env['NODE_PORT'] || 8080, function () {
+  console.log('Webserver listening on ' + server.address().port + '!')
 })
 
 /************

@@ -10,7 +10,7 @@ var api = impress();
     window.addEventListener("load", function(event) {
       var socket;
 
-      var serverUrl = "ws://localhost:9292/";
+      var serverUrl = {{websocketUrl}} // "ws://localhost:9292/";
       var presID = "{{presID}}";
       var stepEnterTimeout = null;
 
