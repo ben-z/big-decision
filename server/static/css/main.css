@@ -177,9 +177,9 @@ html, body {
   float: none;
 }
 
-.tinymce h2 {
+/*.tinymce h2 {
   display: none;
-}
+}*/
 
 .prev-button, .next-button {
   cursor: pointer;
