@@ -163,6 +163,7 @@ app.post('/s/:ID', function (req, res) {
                 res.writeHead(302, {
                   'Location': '/'
                 });
+                res.end()
               }else{
                 console.log(err)
               }
