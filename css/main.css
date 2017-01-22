@@ -7,6 +7,25 @@ html, body {
   overflow-x: hidden;
 }
 
+.nav-wrapper {
+  background: #fff;
+}
+
+.nav-wrapper .brand-logo {
+  margin-left: 16px;
+  color: #000;
+}
+
+.nav-wrapper .btn {
+  background: #2082FC;
+  box-shadow: 0 7px 12px 0 rgba(23,42,99,0.20);
+  border-radius: 2px;
+}
+
+.nav-wrapper .btn:active {
+  box-shadow: 0 7px 8px 0 rgba(23,42,99,0.05);
+}
+
 .slides {
   height: 70%;
   padding: 20px;
@@ -32,6 +51,7 @@ html, body {
 
 .slide > .card-panel {
   height: 100%;
+  box-shadow: 0 10px 60px 0 rgba(29,29,31,0.12);
 }
 
 .templates {
@@ -47,7 +67,7 @@ html, body {
 .templates .card-panel {
   margin-left: auto;
   margin-right: auto;
-  float:none;
+  float: none;
 }
 
 .tinymce h2 {
