@@ -100,12 +100,17 @@ var Slides = {
       $(this.slides.children()[this.currentSlideIdx + 1]).addClass('next-button');
     }
     $(this.slides.children()[this.currentSlideIdx]).removeClass('prev-button').removeClass('next-button');
+  },
+  isLastSlide: function() {
+    return this.currentSlideIdx >= this.slides.children().length - 1;
   }
 };
 
 function nextSlideHandler(e) {
   e.preventDefault();
-  Slides.newSlide();
+  if (Slides.isLastSlide()) {
+    Slides.newSlide();
+  }
   Slides.nextSlide();
 }
 
