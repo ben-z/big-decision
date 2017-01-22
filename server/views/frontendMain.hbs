@@ -132,7 +132,7 @@ $(document).ready(function() {
     console.log(JSON.stringify(outputJSON))
     /*Actual send*/
     $.post('s/{{presID}}', JSON.stringify(outputJSON)).always(function(){
-      window.location = "/p/{{presID}}";
+      window.location = "/sc/{{presID}}/{{secKey}}";
     });
   });
 });
