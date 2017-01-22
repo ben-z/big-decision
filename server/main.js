@@ -63,6 +63,18 @@ var app = express()
 
 
 /*
+*Set the cookie
+*/
+  app.get('/sc/:ID/:secKey', function (req, res) {
+    console.log(req.params.ID + " --- " + req.params.secKey)
+    res.cookie('presenter', req.params.secKey, { maxAge: 900000, httpOnly: true });
+    res.writeHead(302, {
+      'Location': '/p/' + req.params.ID
+    });
+    res.end();
+  });
+
+/*
 **Regarding to the rights, serve the javascript with send command
 */
   app.get('/js/socket.js/:presID', function (req, res) {
@@ -71,7 +83,7 @@ var app = express()
     /*****
     *** make ==
     ***/
-    if(req.cookies['presenter'] != secID){      
+    if(req.cookies['presenter'] == secID){      
       /*Render the presenterJS with the given data*/
         console.log("PRES ID:" + req.params.presID)
         for(var i = 0; i < presentations.length; i++){
