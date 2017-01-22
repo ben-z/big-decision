@@ -16,6 +16,10 @@ html, body {
   color: #000;
 }
 
+.nav-wrapper .brand-logo img {
+	margin-top: 8px;
+}
+
 .nav-wrapper .btn {
   background: #2082FC;
   box-shadow: 0 7px 12px 0 rgba(23,42,99,0.20);
