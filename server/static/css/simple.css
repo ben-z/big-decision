@@ -388,6 +388,7 @@ body {
   padding: 0;
   border: 1px solid #1F7FF7;
   border-radius: 0 4px 4px 0;
+  cursor: pointer;
 }
 
 .modal button span {
