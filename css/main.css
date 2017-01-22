@@ -71,3 +71,8 @@ html, body {
 .tinymce h2 {
   display: none;
 }
+
+.prev-button, .next-button {
+  cursor: pointer;
+  cursor: hand;
+}
