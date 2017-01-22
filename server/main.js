@@ -100,6 +100,7 @@ var app = express()
           if(presentations[i].ID == req.params.presID){
             res.render("impressPresenter", {
               websocketUrl: process.env['WEBSOCKET_URL'] || 'ws://localhost:9292/',
+              serverRoot: process.env['SERVER_ROOT'] || 'localhost:8080',
               presID : req.params.presID,
               secKey : presentations[i].secKey
             })
@@ -111,6 +112,7 @@ var app = express()
         console.log("PRES ID:" + req.params.presID)
         res.render("impressClient", {
           websocketUrl: process.env['WEBSOCKET_URL'] || 'ws://localhost:9292/',
+          serverRoot: process.env['SERVER_ROOT'] || 'localhost:8080',
           presID : req.params.presID
         })
     }
