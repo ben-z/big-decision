@@ -1,3 +1,6 @@
+###Live Preview
+www.screenkraut.me
+
 ## Inspiration
 Normal presentation tools are bloated and cumbersome to use. We wanted to make something for the average person on the go, where time is of the essence and efficiency is key.
  
