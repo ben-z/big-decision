@@ -40,13 +40,11 @@ html, body {
   white-space: normal;
   vertical-align: top;
   height: 100%;
-  width: 75%;
-  min-width: 75%;
-  margin-left: auto;
-  margin-right: 5%;
+  width: 75vw;
+  min-width: 75vw;
   float: none;
   transition: transform 0.55s;
-  transform: translateX(16.66667%); /* initial centered position */
+  transform: translateX(15%); /* initial centered position */
 }
 
 .slide > .card-panel {
