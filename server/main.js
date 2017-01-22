@@ -46,7 +46,7 @@ var app = express()
         console.log("The new presentation " + newPresentationID + ".json was saved!");
       }); 
       /*Set the presenter key*/
-      res.cookie('presenter', newSecKey, { maxAge: 900000, httpOnly: true })
+      res.cookie('presenter', newSecKey, { maxAge: 900000, httpOnly: false })
 
       /*Render the newPresentation*/
       console.log("PRES ID:" + newPresentationID)
@@ -73,17 +73,33 @@ var app = express()
 **Regarding to the rights, serve the javascript with send command
 */
   app.get('/js/socket.js/:presID', function (req, res) {
+    /*Check for the presentation ID*/                
+      var currentPresentation = null
+      var found = false
+      for(var i = 0; i < presentations.length; i++){
+        console.log("ID "+ presentations[i].ID)
+        if(presentations[i].ID == req.params.presID){
+          found = true;
+          currentPresentation = presentations[i]
+          console.log("Found instance")
+          break;
+        }
+      }
+      if(!found){
+        console.log("(0)WebSocketServer not found instance")
+        console.log(presentations)
+        return
+      }
 
     console.log('Cookies: ', req.cookies['presenter'])
-    /*****
-    *** make ==
-    ***/
-    if(req.cookies['presenter'] == secID){      
+
+    if(req.cookies['presenter'] == currentPresentation.secKey){      
       /*Render the presenterJS with the given data*/
         console.log("PRES ID:" + req.params.presID)
         for(var i = 0; i < presentations.length; i++){
           if(presentations[i].ID == req.params.presID){
             res.render("impressPresenter", {
+              websocketUrl: process.env['WEBSOCKET_URL'] || 'ws://localhost:9292/',
               presID : req.params.presID,
               secKey : presentations[i].secKey
             })
@@ -94,6 +110,7 @@ var app = express()
       /*Render the clientJS with the given data*/
         console.log("PRES ID:" + req.params.presID)
         res.render("impressClient", {
+          websocketUrl: process.env['WEBSOCKET_URL'] || 'ws://localhost:9292/',
           presID : req.params.presID
         })
     }
@@ -197,8 +214,8 @@ app.post('/s/:ID', function (req, res) {
   app.use(express.static('static'))
 
 
-app.listen(8080, function () {
-  console.log('Webserver listening on 8080!')
+var server = app.listen(process.env['NODE_PORT'] || 8080, function () {
+  console.log('Webserver listening on ' + server.address().port + '!')
 })
 
 /************
@@ -247,7 +264,6 @@ wsServer.on('request', function(request) {
 
     /*Open a new connection to the client*/
       var connection = request.accept('echo-protocol', request.origin);
-      console.log((new Date()) + ' Connection accepted. With Code ' + request);
 
     /*Recieving message from client*/
       connection.on('message', function(message) {
@@ -273,7 +289,8 @@ wsServer.on('request', function(request) {
                 }
 
                 if(!found){
-                  console.log("WebSocketServer not found instance")
+                  console.log("(1)WebSocketServer not found instance")
+                  console.log(presentations)
                   return
                 }
                 console.log(jsonMessage.secID == currentPresentation.secKey )
@@ -312,7 +329,8 @@ wsServer.on('request', function(request) {
                     }
 
                     if(!found){
-                      console.log("WebSocketServer not found instance")
+                      console.log("(2)WebSocketServer not found instance")
+                      console.log(presentations)
                       
                     }
 
