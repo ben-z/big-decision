@@ -2,7 +2,7 @@ html {
   font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
 
-body {
+html, body {
   height: 100vh;
   overflow-x: hidden;
 }
@@ -25,7 +25,7 @@ body {
   margin-left: auto;
   margin-right: 5%;
   float: none;
-  transition: transform 1s;
+  transition: transform 0.55s;
   transform: translateX(16.66667%); /* initial centered position */
 }
 
@@ -48,3 +48,4 @@ body {
   margin-right: auto;
   float:none;
 }
+
