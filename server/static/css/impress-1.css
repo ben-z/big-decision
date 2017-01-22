@@ -757,6 +757,7 @@ a:focus {
 .copy-field {
   float: left;
   position: relative;
+  margin-top: 5px;
 }
 
 .copy-field input {
