@@ -15,6 +15,30 @@
     <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
 </div>
 
+<div class="modal-wrapper">
+    <div class="modal">
+        <div class="modal-content">
+            <div class="presenter-group">
+                <p>For you to present from:</p>
+                <div class="copy-field">
+                    <input type="url" id="presenter-url"><button type="button" value="COPY" id="presenter-url-copy"><span class="text">COPY</span></button>
+                </div>
+            </div>
+
+            <div class="viewer-group">
+                <p>For viewers to follow along at:</p>
+                <div class="copy-field">
+                    <input type="url" id="viewer-url"><button type="button" value="COPY" id="viewer-url-copy"><span class="text">COPY</span></button>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" value="PRESENT" id="present-button">
+            <span class="text">PRESENT</span>
+        </button>
+    </div>
+</div>
+
 <div id="impress">
     {{#each slides}}
 
