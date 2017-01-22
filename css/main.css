@@ -49,3 +49,6 @@ html, body {
   float:none;
 }
 
+.tinymce h2 {
+  display: none;
+}

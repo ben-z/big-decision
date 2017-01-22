@@ -85,4 +85,6 @@ $(document).ready(function() {
       '//www.tinymce.com/css/codepen.min.css'    
     ]
   });
+
+  $('.tinymce h2').show();
 });
