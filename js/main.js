@@ -60,6 +60,8 @@ var Slides = {
         '//www.tinymce.com/css/codepen.min.css'    
       ]
     });
+
+    // used to reveal the tinymce box once javascript loads (prevents change in font size)
     $('.tinymce h2').show();
   },
   editingEnabled: true
@@ -95,5 +97,7 @@ $(document).ready(function() {
     ]
   });
 
+  // used to reveal the tinymce box once javascript loads (prevents change in font size)
   $('.tinymce h2').show();
+
 });
