@@ -180,6 +180,7 @@ app.post('/s/:ID', function (req, res) {
                 res.render("index", {
                   siteTitle : JSONData.title,
                   presID : JSONData.presID,
+                  template : JSONData.template,
                   secKey : JSONData.secKey,
                   slides: JSONData.slides
                 })
