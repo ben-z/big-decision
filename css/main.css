@@ -23,7 +23,7 @@ html, body {
 }
 
 .nav-wrapper .btn:active {
-  box-shadow: 0 7px 8px 0 rgba(23,42,99,0.05);
+  box-shadow: 0 7px px 0 rgba(23,42,99,0.05);
 }
 
 .slides {

@@ -1,6 +1,13 @@
 'use strict';
 
-var NEW_SLIDE_TEMPLATE = '<div class="col slide"><div class="tinymce"><h2><img title="TinyMCE Logo" src="//www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" style="float: right"/>TinyMCE Inlite Theme</h2></div></div>'; //TinyMCE template
+var NEW_SLIDE_TEMPLATE="";
+NEW_SLIDE_TEMPLATE += "    <div class=\"col slide\">";
+NEW_SLIDE_TEMPLATE += "        <div class=\"card-panel white\">";
+NEW_SLIDE_TEMPLATE += "          <div class=\"tinymce\">";
+NEW_SLIDE_TEMPLATE += "              <h2><img title=\"TinyMCE Logo\" src=\"\/\/www.tinymce.com\/images\/glyph-tinymce@2x.png\" alt=\"TinyMCE Logo\" width=\"110\" height=\"97\" style=\"float: right\"\/>TinyMCE Inlite Theme<\/h2>";
+NEW_SLIDE_TEMPLATE += "          <\/div> ";
+NEW_SLIDE_TEMPLATE += "        <\/div>";
+NEW_SLIDE_TEMPLATE += "    <\/div>";
 
 var $;
 var Slides = {
@@ -87,4 +94,6 @@ $(document).ready(function() {
       '//www.tinymce.com/css/codepen.min.css'    
     ]
   });
+
+  $('.tinymce h2').show();
 });
