@@ -167,7 +167,7 @@
     var impressSupported =
 
                           // Browser should support CSS 3D transtorms
-                           ( pfx( "perspective" ) !== null ) &&
+                          // ( pfx( "perspective" ) !== null ) &&
 
                           // Browser should support `classList` and `dataset` APIs
                            ( body.classList ) &&
